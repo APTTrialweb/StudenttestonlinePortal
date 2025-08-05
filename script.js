@@ -4,7 +4,7 @@ const secretCode = urlParams.get('code');
 if (!secretCode) {
   alert("Invalid QR Code URL!");
 } else {
-  fetch(`https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?code=${secretCode}`)
+  fetch(`https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbw1r1xAIowX_6S4RNWtKBvr89dc_duG9C4OqavxCja1uux-0M9oZ09XFWyk_zfuw226wQ/exec/exec?code=${secretCode}`)
     .then(response => response.json())
     .then(data => {
       if (data.error) {
