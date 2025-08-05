@@ -42,3 +42,14 @@ if (!secretCode) {
       alert("Failed to fetch data.");
     });
 }
+
+// Dropdown Toggle Logic
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.getElementById('prevTestsToggle');
+  const content = document.getElementById('prevTestsContent');
+
+  toggle.addEventListener('click', () => {
+    content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+    toggle.classList.toggle('open');
+  });
+});
