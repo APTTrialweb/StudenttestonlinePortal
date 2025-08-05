@@ -6,7 +6,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="profile-card">
+
+  <!-- Loader Overlay -->
+  <div id="loaderOverlay">
+    <div class="spinner"></div>
+    <p>Loading your profile...</p>
+  </div>
+
+  <!-- Profile Card -->
+  <div class="profile-card" style="display: none;">
     <img id="profilePhoto" src="" alt="Profile Photo">
     <h2 id="studentName">Loading...</h2>
     <p id="batch">Batch: </p>
