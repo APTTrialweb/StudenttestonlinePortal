@@ -61,9 +61,26 @@ h2 {
   border-radius: 6px;
 }
 
-.previous-tests h3 {
+.previous-tests .dropdown-toggle {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
   margin-bottom: 10px;
-  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.previous-tests .dropdown-toggle.open::after {
+  content: ' ▲';
+}
+
+.previous-tests .dropdown-toggle::after {
+  content: ' ▼';
+}
+
+.previous-tests .dropdown-content {
+  display: none;
 }
 
 .previous-tests table {
