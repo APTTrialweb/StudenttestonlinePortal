@@ -53,3 +53,20 @@ document.addEventListener("DOMContentLoaded", function() {
     toggle.classList.toggle('open');
   });
 });
+
+document.getElementById('downloadReportBtn').addEventListener('click', function() {
+  const reportURL = `https://script.google.com/macros/s/YOUR_WEBAPP_ID/exec?code=${secretCode}`;
+  fetch(reportURL)
+    .then(response => response.text())
+    .then(pdfLink => {
+      if (pdfLink.startsWith('http')) {
+        window.open(pdfLink, '_blank');
+      } else {
+        alert('Failed to Generate Report: ' + pdfLink);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("Error Generating Report.");
+    });
+});
