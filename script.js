@@ -53,23 +53,3 @@ document.addEventListener("DOMContentLoaded", function() {
     toggle.classList.toggle('open');
   });
 });
-
-// Download Performance Report Button Logic
-document.getElementById('downloadReportBtn').addEventListener('click', function() {
-  const reportURL = `https://script.google.com/macros/s/AKfycbzbKMhUT1r2R_xSuFSYSjrH8inOy4TW9wY6AP4RzMcL7vBz7biftVNiEgiNdDfHiy8XEw/exec?code=${secretCode}`;
-
-  fetch(reportURL)
-    .then(response => response.text())
-    .then(fileId => {
-      if (fileId.length > 10) {  // Assume it's a valid File ID
-        const directDownloadURL = `https://drive.google.com/uc?export=download&id=${fileId}`;
-        window.location.href = directDownloadURL;  // This will trigger file download
-      } else {
-        alert('Failed to Generate Report: ' + fileId);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      alert("Error Generating Report.");
-    });
-});
