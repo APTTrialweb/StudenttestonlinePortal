@@ -142,18 +142,3 @@ h2 {
     width: 95%;
   }
 }
-.download-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background: white;
-  color: #2193b0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.download-btn:hover {
-  background: #f0f0f0;
-}
