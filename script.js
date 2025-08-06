@@ -1,5 +1,16 @@
+let secretCode = null;
+
+// Get from URL first
 const urlParams = new URLSearchParams(window.location.search);
-const secretCode = urlParams.get('code');
+secretCode = urlParams.get('code');
+
+// If not in URL, get from localStorage
+if (!secretCode) {
+  secretCode = localStorage.getItem('secretCode');
+} else {
+  // Save in localStorage for reloads
+  localStorage.setItem('secretCode', secretCode);
+}
 
 if (!secretCode) {
   alert("Invalid QR Code URL!");
@@ -28,6 +39,7 @@ if (!secretCode) {
       }
 
       let tableBody = document.querySelector('#previousTestsTable tbody');
+      tableBody.innerHTML = ''; // Clear old data on reload
       data.previousTests.forEach(test => {
         let row = `<tr><td>${test.testName}</td><td>${test.marks}</td><td>${test.date}</td></tr>`;
         tableBody.innerHTML += row;
