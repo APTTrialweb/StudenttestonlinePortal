@@ -17,19 +17,35 @@ if (!secretCode) {
         return;
       }
 
+      // Utility function to format date as DD/MM/YYYY
+      function formatDate(dateString) {
+        const dateObj = new Date(dateString);
+        const day = dateObj.getDate().toString().padStart(2, '0');
+        const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+        const year = dateObj.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+
+      // Populate Student Info
       document.getElementById('studentName').innerText = data.student.name;
       document.getElementById('profilePhoto').src = data.student.profilePhoto;
       document.getElementById('batch').innerText = `Batch: ${data.student.batch}`;
 
+      // Live Test Data
       if (data.currentTest) {
-        document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks`;
+        const formattedLiveTestDate = formatDate(data.currentTest.date);
+        document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks (${formattedLiveTestDate})`;
       } else {
         document.getElementById('currentTest').innerText = "No Current Test Data.";
       }
 
+      // Previous Tests Table
       let tableBody = document.querySelector('#previousTestsTable tbody');
+      tableBody.innerHTML = "";  // Clear existing rows
+
       data.previousTests.forEach(test => {
-        let row = `<tr><td>${test.testName}</td><td>${test.marks}</td><td>${test.date}</td></tr>`;
+        const formattedDate = formatDate(test.date);
+        let row = `<tr><td>${test.testName}</td><td>${test.marks}</td><td>${formattedDate}</td></tr>`;
         tableBody.innerHTML += row;
       });
 
