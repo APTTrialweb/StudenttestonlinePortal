@@ -4,8 +4,13 @@ const secretCode = urlParams.get('code');
 if (!secretCode) {
   alert("Invalid QR Code URL!");
 } else {
-  fetch(`https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?code=${secretCode}`)
-    .then(response => response.json())
+  fetch(`https://script.google.com/macros/s/AKfycbw1r1xAIowX_6S4RNWtKBvr89dc_duG9C4OqavxCja1uux-0M9oZ09XFWyk_zfuw226wQ/exec?code=${secretCode}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       if (data.error) {
         alert(data.error);
