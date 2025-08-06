@@ -142,3 +142,21 @@ h2 {
     width: 95%;
   }
 }
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #2193b0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
