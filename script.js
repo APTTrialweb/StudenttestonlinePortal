@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById('downloadReportBtn').addEventListener('click', function() {
-  const reportURL = `https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzbKMhUT1r2R_xSuFSYSjrH8inOy4TW9wY6AP4RzMcL7vBz7biftVNiEgiNdDfHiy8XEw/exec/exec?code=${secretCode}`;
+  const reportURL = `https://script.google.com/macros/s/AKfycbzbKMhUT1r2R_xSuFSYSjrH8inOy4TW9wY6AP4RzMcL7vBz7biftVNiEgiNdDfHiy8XEw/exec?code=${secretCode}`;
+
   fetch(reportURL)
     .then(response => response.text())
     .then(pdfLink => {
