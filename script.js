@@ -32,12 +32,12 @@ if (!secretCode) {
       document.getElementById('batch').innerText = `Batch: ${data.student.batch}`;
 
       // Handle Current Test (Latest Test)
-      if (data.currentTest) {
-        const liveTestDate = formatDate(data.currentTest.date);
-        document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks (${liveTestDate})`;
-      } else {
-        document.getElementById('currentTest').innerText = "No Current Test Data.";
-      }
+      if (data.currentTest && data.currentTest.testName && data.currentTest.date) {
+  const liveTestDate = formatDate(data.currentTest.date);
+  document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks (${liveTestDate})`;
+} else {
+  document.getElementById('currentTest').innerText = "No Current Test Data.";
+}
 
       // Handle Previous Tests
       const tableBody = document.querySelector('#previousTestsTable tbody');
