@@ -4,7 +4,7 @@ const secretCode = urlParams.get('code');
 if (!secretCode) {
   alert("Invalid QR Code URL!");
 } else {
-  fetch(`https://script.google.com/macros/s/AKfycbw1r1xAIowX_6S4RNWtKBvr89dc_duG9C4OqavxCja1uux-0M9oZ09XFWyk_zfuw226wQ/exec?code=${secretCode}`)
+  fetch(`https://script.google.com/macros/s/AKfycbx55WA06bJ1L_pGv3UIH2-kEw5BooDyF-6TDoZt7hBTr5kUIwkfWuZcSFCCl17syDoFkQ/exec?code=${secretCode}`)
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
