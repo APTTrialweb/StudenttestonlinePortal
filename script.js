@@ -26,18 +26,31 @@ if (!secretCode) {
         return `${day}/${month}/${year}`;
       }
 
+      // Function to convert Google Drive link to direct image link
+      function getDirectDriveLink(driveUrl) {
+        if (!driveUrl) return "";
+        let fileIdMatch = driveUrl.match(/[-\w]{25,}/); // Extract file ID
+        if (fileIdMatch) {
+          return `https://drive.google.com/uc?export=view&id=${fileIdMatch[0]}`;
+        }
+        return driveUrl; // Already a direct link
+      }
+
       // Fill Student Info
       document.getElementById('studentName').innerText = data.student.name;
-      document.getElementById('profilePhoto').src = data.student.profilePhoto;
+
+      // Profile Photo (Drive link handled)
+      document.getElementById('profilePhoto').src = getDirectDriveLink(data.student.profilePhoto);
+
       document.getElementById('batch').innerText = `Batch: ${data.student.batch}`;
 
       // Handle Current Test (Latest Test)
       if (data.currentTest && data.currentTest.testName && data.currentTest.date) {
-  const liveTestDate = formatDate(data.currentTest.date);
-  document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks (${liveTestDate})`;
-} else {
-  document.getElementById('currentTest').innerText = "No Current Test Data.";
-}
+        const liveTestDate = formatDate(data.currentTest.date);
+        document.getElementById('currentTest').innerText = `${data.currentTest.testName} - ${data.currentTest.marks} Marks (${liveTestDate})`;
+      } else {
+        document.getElementById('currentTest').innerText = "No Current Test Data.";
+      }
 
       // Handle Previous Tests
       const tableBody = document.querySelector('#previousTestsTable tbody');
