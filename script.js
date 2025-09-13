@@ -51,9 +51,37 @@ if (!secretCode) {
       // Show Profile Card
       document.getElementById('loaderOverlay').classList.add('fade-out');
       document.querySelector('.profile-card').style.display = 'block';
+
+      // -------------------
+      // PDF Download Button
+      // -------------------
+      const pdfBtn = document.getElementById('downloadPdfBtn');
+      pdfBtn.style.display = "inline-block"; // Show button
+
+      pdfBtn.onclick = () => {
+        fetch("https://script.google.com/macros/s/AKfycbx55WA06bJ1L_pGv3UIH2-kEw5BooDyF-6TDoZt7hBTr5kUIwkfWuZcSFCCl17syDoFkQ/exec", {
+          method: "POST",
+          body: JSON.stringify(data), // Send same student + test data back
+          headers: { "Content-Type": "application/json" }
+        })
+          .then(res => res.json())
+          .then(resData => {
+            if (resData.error) {
+              alert("PDF Error: " + resData.error);
+            } else {
+              // Open PDF in new tab
+              window.open(resData.pdfUrl, "_blank");
+            }
+          })
+          .catch(err => {
+            console.error("PDF Fetch Error", err);
+            alert("Failed to generate PDF.");
+          });
+      };
     })
     .catch(err => {
       console.error(err);
       alert("Failed to fetch data.");
     });
 }
+  
