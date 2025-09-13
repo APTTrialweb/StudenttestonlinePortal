@@ -39,8 +39,9 @@ if (!secretCode) {
       // Fill Student Info
       document.getElementById('studentName').innerText = data.student.name;
 
-      // Profile Photo (Drive link handled)
-      document.getElementById('profilePhoto').src = getDirectDriveLink(data.student.profilePhoto);
+      // Profile Photo (Drive link handled + fallback)
+      const photoUrl = getDirectDriveLink(data.student.profilePhoto);
+      document.getElementById('profilePhoto').src = photoUrl || "https://via.placeholder.com/120?text=No+Photo";
 
       document.getElementById('batch').innerText = `Batch: ${data.student.batch}`;
 
